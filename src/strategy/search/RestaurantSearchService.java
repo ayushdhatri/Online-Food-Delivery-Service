@@ -1,4 +1,4 @@
-package strategy;
+package strategy.search;
 
 import dtos.SearchCriteria;
 import models.Restaurant;

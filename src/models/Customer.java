@@ -2,34 +2,26 @@ package models;
 
 import utils.IdGenerator;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer {
-    private final String id;
-
-    private final String name;
-
+public class Customer extends User {
     private Address address;
 
-    private List<Order> orderHistory;
+    private final List<Order> orderHistory;
 
-    public Customer(String name, Address address){
-        this.id = IdGenerator.generateId();
-        this.name = name;
-        this.address = address;
+    public Customer(String name, String phone, Address address){
+        super(name, phone);
         this.orderHistory = new ArrayList<>();
+        this.address = address;
     }
 
-    public String getId(){ return this.id; }
+    public Address getAddress(){
+        return this.address;
+    }
 
-    public String getName() { return this.name; }
-
-    public Address getAddress() { return this.address; }
-
-    public List<Order> getOrderHistory() { return this.orderHistory; }
-
-    public void addOrder(Order order){
+    public void addOrderToHistory(Order order){
         this.orderHistory.add(order);
     }
 
