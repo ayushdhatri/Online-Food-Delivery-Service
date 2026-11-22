@@ -7,12 +7,12 @@ public class Address {
 
     private final String pinCode;
 
-    private final String latitude;
+    private double latitude;
 
-    private final String longitude;
+    private double longitude;
 
 
-    public Address(String city, String state, String pinCode, String latitude, String longitude){
+    public Address(String city, String state, String pinCode, double latitude, double longitude){
         this.city = city;
         this.state = state;
         this.pinCode = pinCode;
@@ -26,8 +26,15 @@ public class Address {
 
     public String getPinCode(){ return this.pinCode; }
 
-    public String getLatitude() { return this.latitude;}
+    public double getLatitude() { return this.latitude;}
 
-    public String getLongitude() { return this.longitude;}
+    public double getLongitude() { return this.longitude;}
+
+    public double distanceTo(Address other){
+        Address address = this;
+        double latitudeDiff = address.getLatitude() - other.getLatitude();
+        double longitudeDiff = address.getLongitude() - other.getLongitude();
+        return Math.sqrt((latitudeDiff * latitudeDiff) + longitudeDiff * longitudeDiff);
+    }
 
 }
